@@ -1,15 +1,17 @@
-import React from "react";
-import { useParameter } from "@storybook/api";
-import { PARAM_KEY } from "./constants";
-import { TabContent } from "./components/TabContent";
+import * as React from 'react';
+import './some.css';
 
-interface TabProps {
-  active: boolean;
+
+const buthtml=`<button class="button">hello button</button>`;
+
+export const TabPanle=()=>{
+   
+
+    return (
+        <div>
+           
+           <iframe id='bulma-iframe' src='demo.html' srcDoc={buthtml} width={400} height={350} frameBorder={0}></iframe>
+           This is div for tab panel.
+        </div>
+    )
 }
-
-export const Tab: React.FC<TabProps> = ({ active }) => {
-  // https://storybook.js.org/docs/react/addons/addons-api#useparameter
-  const paramData = useParameter<string>(PARAM_KEY, "");
-
-  return active ? <TabContent code={paramData} /> : null;
-};

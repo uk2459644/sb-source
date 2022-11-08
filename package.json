@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "trying to develope something new",
   "keywords": [
-    "sb-source", "storybook-addons"
+    "sb-source",
+    "storybook-addons"
   ],
   "repository": {
     "type": "git",
@@ -81,8 +82,27 @@
   "storybook": {
     "displayName": "sb-source",
     "supportedFrameworks": [
-      "react", "vue", "angular", "web-components", "ember", "html", "svelte", "preact", "react-native"
+      "react",
+      "vue",
+      "angular",
+      "web-components",
+      "ember",
+      "html",
+      "svelte",
+      "preact",
+      "react-native"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.11",
+    "@mui/styled-engine-sc": "^5.10.6",
+    "memoizerific": "^1.11.3",
+    "nanoid": "^4.0.0",
+    "styled-components": "^5.3.6"
   }
 }

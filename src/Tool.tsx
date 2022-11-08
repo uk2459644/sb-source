@@ -1,27 +1,47 @@
-import React, { useCallback } from "react";
-import { useGlobals } from "@storybook/api";
-import { Icons, IconButton } from "@storybook/components";
-import { TOOL_ID } from "./constants";
+import { useGlobals, useStorybookApi } from "@storybook/api"
+import { IconButton, Icons } from "@storybook/components";
+import React from "react";
+import { useCallback, useEffect } from "react";
+import { ADDON_ID, TOOL_ID } from "./constants";
 
-export const Tool = () => {
-  const [{ myAddon }, updateGlobals] = useGlobals();
 
-  const toggleMyTool = useCallback(
-    () =>
-      updateGlobals({
-        myAddon: myAddon ? undefined : true,
-      }),
-    [myAddon]
-  );
+export const Tool=()=>{
+    const [globals,updateGlobals]=useGlobals();
+    const {bulmaEnabled}=globals;
 
-  return (
-    <IconButton
-      key={TOOL_ID}
-      active={myAddon}
-      title="Enable my addon"
-      onClick={toggleMyTool}
-    >
-      <Icons icon="lightning" />
-    </IconButton>
-  );
-};
+    const api=useStorybookApi();
+  
+
+    const toggleBulma=useCallback(()=>
+    updateGlobals({
+       bulmaEnabled: ! bulmaEnabled,
+    }),
+    [bulmaEnabled,updateGlobals]
+    );
+
+    useEffect(()=>{
+        api.setAddonShortcut(ADDON_ID,{
+            label: 'Toggle Bulma ',
+            defaultShortcut: ['B'],
+            action:toggleBulma,
+            showInMenu:false,
+            actionName:'bulma'
+        });
+    },[toggleBulma,api]);
+
+    return (
+        
+        <IconButton
+        key={TOOL_ID}
+        active={bulmaEnabled}
+        title="Enable Bulma"
+        onClick={toggleBulma}
+        >
+            <Icons 
+            icon="paintbrush"
+            />
+        </IconButton>
+        
+    )
+
+}
